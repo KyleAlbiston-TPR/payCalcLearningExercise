@@ -3,38 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PayCalc;
 
 namespace localPayCalc
 {
-    public class MockEmployeeRepository : IPermEmployeeRepository
+    class MockEmployeeRepository : IEmployeeRepository
     {
-        private List<PermEmployee> permEmployeeList;
-
+        private List<Employee> _EmployeeList;
         public MockEmployeeRepository()
         {
-            permEmployeeList = new List<PermEmployee>()
+            _EmployeeList = new List<Employee>()
             {
-                new PermEmployee()
-                { 
-                StaffID = 001,
-                StaffName = "Kyle Albiston",
-                AnnualSalary = 15000,
-                AnnualBonus = 200,
-                HoursWorked = 1820                
-                }
+                new Employee()
+                { Id = 1, Name = "Kyle Albiston", AnnualSalary = 15000, AnnualBonus = 4000, HoursWorked = 1820 },
+                new Employee()
+                { Id = 2, Name = "Mark Hammerson", AnnualSalary = 18000, AnnualBonus = 2500, HoursWorked = 2000 }
             };
+
         }
 
-        public PermEmployee GetEmployee(int StaffID)
-        {
-            return permEmployeeList.FirstOrDefault(e => e.StaffID == StaffID);
-        }
-
-
-
-        public void save(PermEmployee employee)
+        public Employee ClaculateTotal()
         {
             throw new NotImplementedException();
+        }
+
+        public Employee GetEmployee(int Id)
+        {
+            return _EmployeeList.FirstOrDefault(e => e.Id == Id);
         }
     }
 }

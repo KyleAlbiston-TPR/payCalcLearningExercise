@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace localPayCalc
 {
-    public interface IPermEmployeeRepository
+    public interface IEmployeeRepository
     {
-        PermEmployee GetEmployee(int id);
-        void save(PermEmployee employee);
+        Employee GetEmployee(int Id);
+        Employee ClaculateTotal();
     }
 }
