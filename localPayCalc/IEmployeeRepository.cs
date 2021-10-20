@@ -9,6 +9,8 @@ namespace localPayCalc
     public interface IEmployeeRepository
     {
         Employee GetEmployee(int Id);
-        Employee ClaculateTotal();
+        IEnumerable<Employee> GetAll(IEnumerable<int> Id);
+        Employee CalculateTotal();
+        Employee CalculateHourly();
     }
 }

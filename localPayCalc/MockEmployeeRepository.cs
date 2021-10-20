@@ -22,9 +22,22 @@ namespace localPayCalc
 
         }
 
-        public Employee ClaculateTotal()
+        public Employee CalculateHourly()
         {
             throw new NotImplementedException();
+        }
+
+        public Employee CalculateTotal()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Employee> GetAll(IEnumerable<int> Id)
+        {
+            using (var context = new MockEmployeeRepository(_EmployeeList))
+            {
+                return context._EmployeeList.Where(e => e.Id(id => id == e)).ToList();
+            }
         }
 
         public Employee GetEmployee(int Id)

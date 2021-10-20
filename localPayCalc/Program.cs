@@ -40,7 +40,7 @@ namespace PayCalc
             MockEmployeeRepository mock = new MockEmployeeRepository();
             Console.Clear();
             Console.WriteLine("\t\tTPR Pay calculator program v.1");
-            Console.ReadLine();
+            Console.ReadLine();           
             
         }
 
@@ -61,7 +61,7 @@ namespace PayCalc
 
             if (Response == "1")
             {
-                Console.WriteLine(string.Concat(mock.ClaculateTotal()));
+                Console.WriteLine(string.Concat(mock.CalculateTotal()));
             }
             if (Response == "2")
             { 
