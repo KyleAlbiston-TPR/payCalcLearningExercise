@@ -17,7 +17,7 @@ namespace localPayCalc
 
         public override string ToString()
         {
-            return $"ID: {Id} \nName: {Name} \nAnnual Salary: {AnnualSalary} \nAnnual Bonus: {AnnualBonus} \nHours Worked: {HoursWorked}";
+            return $"ID: {Id} \nName: {Name} \nAnnual Salary: {AnnualSalary} \nAnnual Bonus: {AnnualBonus} \nHours Worked: {HoursWorked} \n";
         }
     }
 }

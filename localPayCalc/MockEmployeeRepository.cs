@@ -9,7 +9,7 @@ namespace localPayCalc
 {
     class MockEmployeeRepository : IEmployeeRepository
     {
-        private List<Employee> _EmployeeList;
+        public List<Employee> _EmployeeList;
         public MockEmployeeRepository()
         {
             _EmployeeList = new List<Employee>()
@@ -22,27 +22,38 @@ namespace localPayCalc
 
         }
 
-        public Employee CalculateHourly()
+        public Employee Create(int Id, string Name, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked)
         {
-            throw new NotImplementedException();
-        }
-
-        public Employee CalculateTotal()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Employee> GetAll(IEnumerable<int> Id)
-        {
-            using (var context = new MockEmployeeRepository(_EmployeeList))
+            var createNew = new Employee()
             {
-                return context._EmployeeList.Where(e => e.Id(id => id == e)).ToList();
-            }
+                Id = Id,
+                Name = Name,
+                AnnualSalary = AnnualSalary,
+                AnnualBonus = AnnualBonus,
+                HoursWorked = HoursWorked,
+            };
+            _EmployeeList.Add(createNew);
+            return createNew;
+        }
+
+        public bool Delete(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Employee> GetAll()
+        {
+            return (_EmployeeList);
         }
 
         public Employee GetEmployee(int Id)
         {
             return _EmployeeList.FirstOrDefault(e => e.Id == Id);
+        }
+
+        public Employee Update(int Id, string Name, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked)
+        {
+            throw new NotImplementedException();
         }
     }
 }
