@@ -9,8 +9,11 @@ namespace localPayCalc
     public interface IEmployeeRepository
     {
         Employee GetEmployee(int Id);
-        IEnumerable<Employee> GetAll(IEnumerable<int> Id);
-        Employee CalculateTotal();
-        Employee CalculateHourly();
+        IEnumerable<Employee> GetAll();
+
+        Employee Create(int Id, string Name, string ContractType, decimal ?DayRate, int ?WeeksWorked, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked);
+        bool Delete(int Id);
+
+        Employee Update(int Id, string Name, string ContractType, decimal? DayRate, int? WeeksWorked, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked);
     }
 }
