@@ -6,6 +6,8 @@ namespace PayCalc
 {
     class Program
     {
+        private static MockEmployeeRepository mock = new MockEmployeeRepository();
+
         static void Main(string[] args)
         {
             Console.WriteLine("\t\tTPR Pay calculator program v.1");
@@ -40,29 +42,37 @@ namespace PayCalc
         private static void addNewStaff()
         {
             Employee employee = new Employee();
-            MockEmployeeRepository mock = new MockEmployeeRepository();
             Console.Clear();
             Console.WriteLine("\t\tTPR Pay calculator program v.1");
-
             Console.WriteLine("\n\tEmployee Data Entry");
             Console.WriteLine("Staff ID: ");
             employee.Id = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Staff Name: ");
             employee.Name = Console.ReadLine();
+            //if statement for emp contract type
+            //if contract type = perm ask for sal bonus and hours - return string with those values
+            //if contract type = temp/contract ask for rate and weeks - return string with id contract name rate weeks
+            Console.WriteLine("Enter a contract type \t Permanent -- Temporary: ");
+            employee.ContractType = Console.ReadLine();
+            Console.WriteLine("Enter Day rate: ");
+            employee.DayRate = Convert.ToDecimal(Console.ReadLine());
+            Console.WriteLine("Enter weeks hired for: ");
+            employee.WeeksWorked = Convert.ToInt32(Console.ReadLine()); 
             Console.WriteLine("Annual Salary: ");
             employee.AnnualSalary = Convert.ToDecimal(Console.ReadLine());
             Console.WriteLine("Annual Bonus: ");
-            employee.AnnualSalary = Convert.ToDecimal(Console.ReadLine());
+            employee.AnnualBonus = Convert.ToDecimal(Console.ReadLine());
             Console.WriteLine("Hours Worked: ");
             employee.HoursWorked = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\n \tNew Employee Data: \n");
-            Console.WriteLine(string.Concat(mock.Create(Id: employee.Id, Name: employee.Name, AnnualSalary: employee.AnnualSalary, AnnualBonus: employee.AnnualBonus, HoursWorked: employee.HoursWorked)));
+            Console.WriteLine(string.Concat(mock.Create(Id: employee.Id, Name: employee.Name, ContractType: employee.ContractType, DayRate: employee.DayRate, WeeksWorked: employee.WeeksWorked, AnnualSalary: employee.AnnualSalary, AnnualBonus: employee.AnnualBonus, HoursWorked: employee.HoursWorked)));
+            //maybe? add new mock.createTemp. test without it first and see from there what needs to be done
         }
 
         public static void generateReport()
         {
             Employee employee = new Employee();
-            MockEmployeeRepository mock = new MockEmployeeRepository();
+            
             Console.Clear();
             Console.WriteLine("\t\tTPR Pay calculator program v.1");
             Console.WriteLine("\n \tEmployee Data: \n");
@@ -73,11 +83,8 @@ namespace PayCalc
         public static void generateStaffPay()
         {
             Employee employee = new Employee();
-            MockEmployeeRepository mock = new MockEmployeeRepository();
-
             Console.Clear();
             Console.WriteLine("\t\tTPR Pay calculator program v.1");
-
             Console.WriteLine(Environment.NewLine + "Enter ID: ");
             int inputID = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine(string.Concat(mock.GetEmployee(inputID)));
@@ -87,7 +94,7 @@ namespace PayCalc
 
             if (Response == "1")
             {
-               // Console.WriteLine(string.Concat(mock.CalculateTotal()));
+               
             }
             if (Response == "2")
             {

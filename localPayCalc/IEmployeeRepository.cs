@@ -11,9 +11,9 @@ namespace localPayCalc
         Employee GetEmployee(int Id);
         IEnumerable<Employee> GetAll();
 
-        Employee Create(int Id, string Name, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked);
+        Employee Create(int Id, string Name, string ContractType, decimal ?DayRate, int ?WeeksWorked, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked);
         bool Delete(int Id);
 
-        Employee Update(int Id, string Name, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked);
+        Employee Update(int Id, string Name, string ContractType, decimal? DayRate, int? WeeksWorked, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked);
     }
 }

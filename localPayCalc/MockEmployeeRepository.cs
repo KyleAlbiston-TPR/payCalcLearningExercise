@@ -18,16 +18,19 @@ namespace localPayCalc
                 { Id = 1, Name = "Kyle Albiston", AnnualSalary = 15000, AnnualBonus = 4000, HoursWorked = 1820 },
                 new Employee()
                 { Id = 2, Name = "Mark Hammerson", AnnualSalary = 18000, AnnualBonus = 2500, HoursWorked = 2000 }
-            };
+            }; //currently shows all information regardless of contract type
 
         }
 
-        public Employee Create(int Id, string Name, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked)
+        public Employee Create(int Id, string Name, string ContractType, decimal? DayRate, int? WeeksWorked, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked)
         {
             var createNew = new Employee()
             {
                 Id = Id,
                 Name = Name,
+                ContractType = ContractType,
+                DayRate = (decimal)DayRate,
+                WeeksWorked = (int)WeeksWorked,
                 AnnualSalary = AnnualSalary,
                 AnnualBonus = AnnualBonus,
                 HoursWorked = HoursWorked,
@@ -51,7 +54,7 @@ namespace localPayCalc
             return _EmployeeList.FirstOrDefault(e => e.Id == Id);
         }
 
-        public Employee Update(int Id, string Name, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked)
+        public Employee Update(int Id, string Name, string ContractType, decimal? DayRate, int? WeeksWorked, decimal AnnualSalary, decimal AnnualBonus, int HoursWorked)
         {
             throw new NotImplementedException();
         }
